@@ -1,6 +1,11 @@
 import React from 'react';
 
 const BreedFilter = (props) => {
+     /*
+          After when a user chooses the option from the breedName, 
+          we are passing the data from child to parent: BreedFilter--> Breeds.
+          We can do that by forwarding the data in onChangeFilter function that we got from Breeds
+     */
     const dropdownChangeHandler = (event) => {
         props.onChangeFilter(event.target.value);
     };
