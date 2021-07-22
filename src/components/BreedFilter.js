@@ -6,8 +6,8 @@ const BreedFilter = ({ breedNames, selected, onChangeFilter }) => {
         Find out which dogBreed name the user selected. 
 
           After when a user chooses from the option, 
-          we will pass that data from child component to parent component by. 
-          Iforwarding the data in onChangeFilter function.
+          we will pass that data from child component to parent component by 
+          forwarding the data in onChangeFilter function.
      */
     const dropdownChangeHandler = (event) => {
         onChangeFilter(event.target.value);
