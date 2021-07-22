@@ -1,22 +1,25 @@
 import React from 'react';
 
-const BreedFilter = (props) => {
+const BreedFilter = ({ breedNames, selected, onChangeFilter }) => {
      /*
-          After when a user chooses the option from the breedName, 
-          we will pass the data from child to parent. 
-          In our case from BreedFilter component--> Breeds component.
-          We can do that by forwarding the data in onChangeFilter function that we got from Breeds
+     Goal of BreedFilter component:
+        Find out which dogBreed name the user selected. 
+
+          After when a user chooses from the option, 
+          we will pass that data from child component to parent component by. 
+          Iforwarding the data in onChangeFilter function.
      */
     const dropdownChangeHandler = (event) => {
-        props.onChangeFilter(event.target.value);
+        onChangeFilter(event.target.value);
     };
     return (
     <div>
         <div>
         <label>Filter by breed</label>
-        <select value={props.selected} onChange={dropdownChangeHandler}>
-            {props.breedNames.map((breed) => (
-            <option key={breed.id} value={breed.breedName}>{breed.breedName}</option>
+        <select value={selected} onChange={dropdownChangeHandler}>
+            <option value='all'>All breeds</option>
+            {breedNames.map((breed) => (
+            <option key={breed} value={breed}>{breed}</option>
             ))}
         </select>
         </div>

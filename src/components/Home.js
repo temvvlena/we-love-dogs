@@ -1,21 +1,24 @@
 import React, { useState, useEffect } from "react";
-import Breeds from "./Breeds";
+import UserBreed from "./UserBreed";
 
-function Home() {
+function Home() { 
   /*
-      I used three states. 
-      dogBreeds restore an array of items. The other two are just helpful for debugging purposes.
+    Goal of Home component:
+      1) Fetch all 95 dog breeds
   */
+
+  //I used three states. dogBreeds restores an array of all dog breeds. 
+  //The other two are just helpful for debugging purposes.
   const [dogBreeds, setDogBreeds] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // useEffect will fetch API as soon as a user enters our website. Will only run once.
+  // useEffect will call the API for only once as soon as the user enters our website
   useEffect(() => {
     fetchDogsHandler();
   }, []);
 
-  // Here, I am fetching the data and then covert it into an array so I can use it later.
+  // calling API
   async function fetchDogsHandler() {
     setIsLoading(true);
     setError(null);
@@ -24,17 +27,9 @@ function Home() {
       if (!response.ok) {
         throw new Error("Something went wrong!");
       }
-      const data = await response.json();
-      // Here I created a new list and both time and space complexity of this function will O(N)
-      const transformedDogBreeds = [];
-      for (const property in data.message) {
-        var temporaryObject = {};
-        temporaryObject["id"] = property;
-        temporaryObject["breedName"] = property;
-        transformedDogBreeds.push(temporaryObject);
-      }
-      // My array now looks like this --> [{id: "bulldog", breedName: "bulldog", breedList: Array(3) , more ....}
-      // So, I can setState and pass dogBreeds as props.
+      const responseData = await response.json();
+      const transformedDogBreeds = Array.from(Object.keys(responseData.message));
+      //transformedDogBreeds contains an array of all 95 dog breeds' name.
       setDogBreeds(transformedDogBreeds);
     } catch (error) {
       setError(error.message);
@@ -44,15 +39,11 @@ function Home() {
 
   return (
     <React.Fragment>
-      {/* After Filtering, a user can click "Fetch All Dog Breeds" and go see all dogs or just click back arrow */}
-      <section>
-        <button onClick={fetchDogsHandler}>Fetch All Dog Breeds</button>
-      </section>
-
       {/* It renders based on 3 states. If displays if there's any error while fetching the data */}
-      {/* After rendering it passes the array to Breeds component  */}
+      {/* After the successful API call, we are passing the total 95 dog breed array to UserBreed component where 
+      our user will filter the data  */}
       <section>
-        {!isLoading && dogBreeds.length > 0 && <Breeds dogBreeds={dogBreeds} />}
+        {!isLoading && dogBreeds.length > 0 && <UserBreed dogBreeds={dogBreeds} />}
         {!isLoading && error && <p>{error}</p>}
         {isLoading && <p>Loading...</p>}
       </section>

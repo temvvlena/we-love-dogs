@@ -1,6 +1,6 @@
 import React from "react";
 import Home from "./components/Home";
-import RandomPictures from "./components/RandomPictures";
+import EachBreed from "./components/EachBreed";
 import { Route } from "react-router-dom";
 
 import "./App.css";
@@ -13,7 +13,7 @@ function App() {
   return (
     <React.Fragment>
       <Route exact path="/" component={Home} />
-      <Route exact path="/pictures/:id" component={RandomPictures} />
+      <Route exact path="/pictures/:id" component={EachBreed} />
     </React.Fragment>
   );
 }

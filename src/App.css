@@ -1,30 +1,39 @@
-  button, .link {
-    font: inherit;
-    cursor: pointer;
-    background: #005a9c;
-    border: 2px solid #005a9c;
-    color: white;
-    padding: 0.75rem 2rem;
-    border-radius: 8px;
-    text-decoration: none;
-  }
+button, .link2 {
+  font: inherit;
+  cursor: pointer;
+  background: #005a9c;
+  border: 1px solid #005a9c;
+  color: white;
+  padding: 0.3rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+}
 
-  img {
-    margin-top: 20px;
-    width:500px;
-    height:600px;
-  }
-  
-  button:hover, .link:hover {
-    background-color: #3db6ee;
-    color: white;
-  }
-  section {
-    margin: 1rem auto;
-    width: 90%;
-    max-width: 40rem;
-    text-align: center;
-    background-color: white;
-    padding: 2rem;
-    border-radius: 12px;
-  }
+img {
+  margin-top: 20px;
+  width:500px;
+  height:600px;
+}
+
+button:hover, .link:hover {
+  background-color: #3db6ee;
+  color: white;
+}
+section {
+  margin: 1rem auto;
+  width: 90%;
+  max-width: 40rem;
+  text-align: center;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+}
+.section2 {
+  margin: 1rem;
+  padding: 1rem;
+  background-color: #005a9c;
+  box-shadow:#3db6ee;
+  border-radius: 12px;
+  text-align: center;
+  color: white;
+}
