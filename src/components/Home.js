@@ -1,41 +1,35 @@
 import React, { useState, useEffect } from "react";
 import UserBreed from "./UserBreed";
+import useHttp from "../hooks/useHttp";
 
-function Home() { 
+function Home() {
   /*
     Goal of Home component:
       1) Fetch all 95 dog breeds
   */
 
-  //I used three states. dogBreeds restores an array of all dog breeds. 
-  //The other two are just helpful for debugging purposes.
+  //dogBreeds restores an array of all dog breeds.
   const [dogBreeds, setDogBreeds] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
 
-  // useEffect will call the API for only once as soon as the user enters our website
+  // Custom hook will return the following three variables.
+  const { isLoading, error, sendRequest: fetchDogsHandler } = useHttp();
+
   useEffect(() => {
-    fetchDogsHandler();
-  }, []);
-
-  // calling API
-  async function fetchDogsHandler() {
-    setIsLoading(true);
-    setError(null);
-    try {
-      const response = await fetch("https://dog.ceo/api/breeds/list/all");
-      if (!response.ok) {
-        throw new Error("Something went wrong!");
-      }
-      const responseData = await response.json();
-      const transformedDogBreeds = Array.from(Object.keys(responseData.message));
-      //transformedDogBreeds contains an array of all 95 dog breeds' name.
+    // We will pass transformTasks in fetchDogsHandler
+    const transformTasks = (taskObj) => {
+      const transformedDogBreeds = Array.from(Object.keys(taskObj.message));
       setDogBreeds(transformedDogBreeds);
-    } catch (error) {
-      setError(error.message);
-    }
-    setIsLoading(false);
-  }
+    };
+
+    // Since we already have sendRequest as fetchDogsHandler, we have
+    // to pass two parameters: url and transformTasks. Now, the page
+    // will rerender only if fetchDogsHandler changes.
+    fetchDogsHandler(
+      { url: "https://dog.ceo/api/breeds/list/all" },
+      transformTasks
+    );
+  }, [fetchDogsHandler]);
+  console.log(dogBreeds);
 
   return (
     <React.Fragment>
@@ -43,7 +37,9 @@ function Home() {
       {/* After the successful API call, we are passing the total 95 dog breed array to UserBreed component where 
       our user will filter the data  */}
       <section>
-        {!isLoading && dogBreeds.length > 0 && <UserBreed dogBreeds={dogBreeds} />}
+        {!isLoading && dogBreeds.length > 0 && (
+          <UserBreed dogBreeds={dogBreeds} />
+        )}
         {!isLoading && error && <p>{error}</p>}
         {isLoading && <p>Loading...</p>}
       </section>
