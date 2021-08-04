@@ -13,7 +13,6 @@ function Home() {
 
   // Custom hook will return the following three variables.
   const { isLoading, error, sendRequest: fetchDogsHandler } = useHttp();
-
   useEffect(() => {
     // We will pass transformTasks in fetchDogsHandler
     const transformTasks = (taskObj) => {
@@ -29,21 +28,19 @@ function Home() {
       transformTasks
     );
   }, [fetchDogsHandler]);
-  console.log(dogBreeds);
-
   return (
-    <React.Fragment>
+    <>
       {/* It renders based on 3 states. If displays if there's any error while fetching the data */}
       {/* After the successful API call, we are passing the total 95 dog breed array to UserBreed component where 
       our user will filter the data  */}
-      <section>
+      <section id="names">
         {!isLoading && dogBreeds.length > 0 && (
-          <UserBreed dogBreeds={dogBreeds} />
+          <UserBreed data-test-id="data" dogBreeds={dogBreeds} />
         )}
         {!isLoading && error && <p>{error}</p>}
-        {isLoading && <p>Loading...</p>}
+        {isLoading && <p data-test-id="loading">Loading...</p>}
       </section>
-    </React.Fragment>
+    </>
   );
 }
 

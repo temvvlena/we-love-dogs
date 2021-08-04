@@ -17,9 +17,9 @@ const BreedFilter = ({ breedNames, selected, onChangeFilter }) => {
         <div>
         <label>Filter by breed</label>
         <select value={selected} onChange={dropdownChangeHandler}>
-            <option value='all'>All breeds</option>
+            <option data-testid="select-option" value='all'>All breeds</option>
             {breedNames.map((breed) => (
-            <option key={breed} value={breed}>{breed}</option>
+            <option data-testid="select-option" key={breed} value={breed}>{breed}</option>
             ))}
         </select>
         </div>

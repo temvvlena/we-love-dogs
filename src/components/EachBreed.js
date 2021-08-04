@@ -20,7 +20,6 @@ const EachBreed = () => {
   const { isLoading, error, sendRequest: fetchPictures } = useHttp();
 
   // Just like Home page, it also uses useEffect and automatically renders it.
-  // Since we used useParams, I used useCallback to get rid of some bugs.
   useEffect(() => {
     const transformTasks = (taskObj) => {
       const pictures = Object.values(taskObj.message);
@@ -31,9 +30,8 @@ const EachBreed = () => {
       { url: "https://dog.ceo/api/breed/" + id + "/images/random/3" },
       transformTasks
     );
-  // Only rerenders if one of the following three changes.
+    // Only rerenders if one of the following three changes.
   }, [fetchPictures, id, check]);
-
 
   // Only renders the images, if the state has 3 images in an array.
   // Otherwise, return an empty string.
@@ -44,11 +42,11 @@ const EachBreed = () => {
     ));
   }
 
-  // It will change the state therefore it causes to rerender and 
-  // shows more cute dog pictures. 
+  // It will change the state therefore it causes to rerender and
+  // shows more cute dog pictures.
   const buttonHandler = () => {
-    setCheck(prevCheck => !prevCheck);
-  }
+    setCheck((prevCheck) => !prevCheck);
+  };
 
   return (
     <section>
