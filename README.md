@@ -1,15 +1,16 @@
-﻿# Principles-Assignment
+﻿# We-Love-Dogs! :)
 
-npm install and then npm start
+In this project, I wanted to express how much I love dogs.
 
-**Update 8/24**:
+Deployed on Firebase. \*[click here](https://dog-api-73374.web.app/) to check out the website.
 
-1. I built a **Custom http Hook**.
+**How did you build?**:
 
-2. For **testing**, I used React Testing Library and Jest. However, I was puzzled as to how to use **async & await** properly; therefore, I was unable to finish up my RTL testing. Since I hit the deadline, I am submitting all the work I have done so far.
+The website first fetches all dog breeds from \*[this website](https://dog.ceo/dog-api/).
+Users can choose to see all dog breeds or one one dog breed
+After choosing the dog breed, it will display three cute dog pictures from the dog API.
 
-Thank you for your time and enjoy this beautiful day!
+**Utilized**: ReactJS, Firebase, DOG API, Custom hook, React Testing Library, and Jest
 
-Sincerely,
-
+Best wishes,
 Temuulen Erdenebulgan
