@@ -17,6 +17,12 @@ After choosing the dog breed, it will display three cute dog pictures from the d
 **Images**
 ![1](https://user-images.githubusercontent.com/44326790/128615581-461e731c-5369-483f-9806-d3a262099688.PNG)
 
+---
+
+---
+
+---
+
 ![2](https://user-images.githubusercontent.com/44326790/128615583-6e08a431-410a-49cb-93d1-71828e60d397.PNG)
 
 Best wishes,
