@@ -12,7 +12,7 @@ After choosing the dog breed, it will display three cute dog pictures from the d
 
 **Utilized**: ReactJS, Firebase, DOG API, Custom hook, React Testing Library, and Jest
 
-**Run Locally**: Clone the repo, type _npm install_, then _npm start_. It will start localhost:3000.
+**Run Locally**: Clone the repo, type **_npm install_**, then **_npm start_**. It will start localhost:3000.
 
 **Images**
 ![1](https://user-images.githubusercontent.com/44326790/128615581-461e731c-5369-483f-9806-d3a262099688.PNG)
